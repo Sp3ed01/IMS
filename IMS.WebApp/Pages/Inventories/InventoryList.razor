@@ -1,0 +1,41 @@
+﻿@page "/inventories"
+@using IMS.UseCases.Inventories.Interfaces
+
+
+@inject NavigationManager NavigationManager
+
+
+<h3>Inventory List</h3>
+<br/>
+
+<SearchInventoryComponent 
+    OnSearchInventory="OnSearchInventory"> </SearchInventoryComponent>
+
+<br/>
+<InventoryListComponent SearchTerm="@searchTerm"></InventoryListComponent>
+<br/>
+<button 
+    type="button" 
+    class="btn btn-primary"
+    @onclick="AddInventory">Add Inventory</button>
+
+
+
+
+@code {
+    
+    private string searchTerm = string.Empty;
+
+    private void OnSearchInventory(string searchTerm)
+    {
+        this.searchTerm = searchTerm;
+
+    }
+
+    private void AddInventory()
+    {
+        NavigationManager.NavigateTo("/addinventory");
+    }
+
+    
+}
